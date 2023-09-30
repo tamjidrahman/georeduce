@@ -6,7 +6,9 @@ authors = ["Tamjid Rahman <tamjidarrahman@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = ">=3.11,<3.13"
+numpy = "^1.26.0"
+matplotlib = "^3.8.0"
 
 
 [build-system]
