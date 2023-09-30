@@ -1,0 +1,14 @@
+[tool.poetry]
+name = "georeduce"
+version = "0.1.0"
+description = "Reducing dimensions but maintaining geometric properties"
+authors = ["Tamjid Rahman <tamjidarrahman@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
