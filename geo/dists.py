@@ -1,5 +1,5 @@
 import numpy as np
-from vis.scatter import plot_array
+from matplotlib import pyplot as plt
 
 class SphericalDistribution:
     """A distribution of D dimensional vectors embedded in S^(D-1) unit sphere
@@ -13,9 +13,15 @@ class SphericalDistribution:
         self.distribution = get_spherical_uniform_distribution(dim, num_samples)
 
     def plot(self):
-        if self.dim == 2:
-            plot_array(self.distribution)
-        raise Exception(NotImplemented)
+        if self.dim > 3:
+            raise Exception(NotImplemented)
+
+        dims = (self.distribution[:, i] for i in range(self.dim))
+        # Scatter plot
+        plt.scatter(*dims, cmap='hot')
+
+        # Display the plot
+        plt.show()
 
 
     
