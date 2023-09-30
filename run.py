@@ -1,5 +1,4 @@
-from geo.dists import get_spherical_uniform_distribution
-from vis.scatter import plot_array
+from geo.dists import SphericalDistribution
 
-dist = get_spherical_uniform_distribution(dim=2, num_samples=10)
-plot_array(dist)
+dist = SphericalDistribution(2, 10)
+dist.plot()

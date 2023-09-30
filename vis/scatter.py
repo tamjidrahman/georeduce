@@ -1,7 +1,7 @@
-from numpy import array
+from numpy import ndarray
 from matplotlib import pyplot as plt
 
-def plot_array(array_to_plot: array) -> None:
+def plot_array(array_to_plot: ndarray) -> None:
     # Set the figure size
     plt.rcParams["figure.figsize"] = [7.50, 3.50]
     plt.rcParams["figure.autolayout"] = True

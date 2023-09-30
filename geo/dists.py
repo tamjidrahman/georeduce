@@ -1,6 +1,26 @@
-import numpy as np, array
+import numpy as np
+from vis.scatter import plot_array
 
-def get_spherical_uniform_distribution(dim: int, num_samples, radius: float = 1) -> array:
+class SphericalDistribution:
+    """A distribution of D dimensional vectors embedded in S^(D-1) unit sphere
+    """
+
+    def __init__(self, dim: int, num_samples: int):
+
+        self.dim = dim
+        self.num_samples = num_samples
+
+        self.distribution = get_spherical_uniform_distribution(dim, num_samples)
+
+    def plot(self):
+        if self.dim == 2:
+            plot_array(self.distribution)
+        raise Exception(NotImplemented)
+
+
+    
+
+def get_spherical_uniform_distribution(dim: int, num_samples:int, radius: float = 1) -> np.ndarray:
     """Generate uniform distribution over a sphere
 
     'num_samples' samples of vectors of dimension N 
