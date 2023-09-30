@@ -1,5 +1,7 @@
+from functools import cached_property
 import numpy as np
 from matplotlib import pyplot as plt
+from sklearn import metrics
 
 class SphericalDistribution:
     """A distribution of D dimensional vectors embedded in S^(D-1) unit sphere
@@ -29,8 +31,23 @@ class SphericalDistribution:
         # Display the plot
         plt.show()
 
+    @classmethod
+    def geodesic_distance(self, x1: np.ndarray, x2: np.ndarray) -> float:
+        """Calculates geodesic distance between two points
 
-    
+        In a unit sphere, this is just the radius (1) multiplied by the angle
+        """
+        if np.array_equal(x1,x2):
+            return 0
+
+        return np.arccos(np.dot(x1, x2))
+
+    @cached_property
+    def distance_matrix(self) -> np.ndarray:
+        """Returns distance matrix of geodesic distances
+        """
+        return metrics.pairwise_distances(self.distribution, metric=self.geodesic_distance)
+
 
 def get_spherical_uniform_distribution(dim: int, num_samples:int, radius: float = 1) -> np.ndarray:
     """Generate uniform distribution over a sphere
