@@ -15,10 +15,16 @@ class SphericalDistribution:
     def plot(self):
         if self.dim > 3:
             raise Exception(NotImplemented)
+        
+        fig = plt.figure()
+        if self.dim == 3:
+            ax = fig.add_subplot(projection='3d')
+        else:
+            ax = fig.add_subplot()
 
         dims = (self.distribution[:, i] for i in range(self.dim))
         # Scatter plot
-        plt.scatter(*dims, cmap='hot')
+        ax.scatter(*dims, cmap='hot')
 
         # Display the plot
         plt.show()
