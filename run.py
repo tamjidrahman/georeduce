@@ -1,12 +1,21 @@
 from geo.dists import SphericalDistribution, HammingDistribution
 from matplotlib import pyplot as plt
-from encoder.encoder import IdentityEncoder
+from encoder.encoder import QuadrantEncoder
+import logging
+import seaborn as sns
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger()
 
 
-plt.rcParams["figure.figsize"] = [7.50, 3.50]
-plt.rcParams["figure.autolayout"] = True
+logger.info("Creating Distribution")
+dist = SphericalDistribution(2, 100)
+encoder = QuadrantEncoder(dist)
 
-dist = SphericalDistribution(3, 1000)
-encoder = IdentityEncoder(dist)
+logger.info("Plotting")
+sns.relplot(
+    x=encoder.input_distribution.distance_matrix.flatten(),
+    y=encoder.transformed_distribution.distance_matrix.flatten(),
+)
 
-plt.scatter(encoder.input_distribution.distribution, encoder.transformed_distribution.distribution)
+plt.show()
