@@ -1,8 +1,7 @@
+import numpy as np
+
 from encoder.encoder import Encoding, logger
 from geo.dists import HammingDistribution
-
-
-import numpy as np
 
 
 class QuadrantEncoder(Encoding):
@@ -14,7 +13,7 @@ class QuadrantEncoder(Encoding):
 
     @property
     def transformed_distribution(self) -> HammingDistribution:
-        logger.info("Encoding")
+        logger.info("Encoding started")
 
         transform_distribution = HammingDistribution(
             dim=self.input_distribution.dim,
@@ -26,4 +25,5 @@ class QuadrantEncoder(Encoding):
         )
         transform_distribution.distribution = new_distribution
 
+        logger.info("Encoding complete")
         return transform_distribution

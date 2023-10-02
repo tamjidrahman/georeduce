@@ -1,7 +1,7 @@
-from abc import ABC, abstractproperty
-from functools import cached_property
-from geo.dists import Distribution, SphericalDistribution
 import logging
+from abc import ABC, abstractproperty
+
+from geo.dists import Distribution
 
 logger = logging.getLogger()
 
@@ -35,5 +35,3 @@ class IdentityEncoder(Encoding):
     def transformed_distribution(self) -> Distribution:
         """Transforms Distribution from one type to another"""
         return self.input_distribution
-
-

@@ -1,10 +1,10 @@
-from encoder.encoder import Encoding, logger
-from geo.dists import HammingDistribution
 from copy import deepcopy
-from sklearn.metrics import pairwise_distances
-
 
 import numpy as np
+from sklearn.metrics import pairwise_distances
+
+from encoder.encoder import Encoding, logger
+from geo.dists import HammingDistribution
 
 
 class NearestPointEncoder(Encoding):
